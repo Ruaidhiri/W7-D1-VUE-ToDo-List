@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/bundle.js"></script>
+  </head>
+  <body>
+    <div id="app">
+
+      <ul>
+        <li v-for="(item, index) in list" v-bind:class="item.complete ? 'complete' : 'notComplete'">
+          <span>{{item.task}}</span>
+
+          <span v-if="item.complete">Complete!</span>
+          <button v-if="!item.complete" v-on:click="markTaskComplete(index)">Mark Complete</button>
+
+          <form>
+            <p>Priority:</p>
+            <div>
+            <input type="radio" name="priority" id="low" class="low">
+            <label for="low">low</label>
+            <input type="radio" name ="priority" id="high" class="high">
+            <label for="high">high</label>
+            </div>
+          </form>
+
+        </li>
+      </ul>
+
+      <input type="text" v-model="newTask">
+
+      <button v-on:click="saveNewTask">Save Task</button>
+
+    </div>
+  </body>
+</html>
